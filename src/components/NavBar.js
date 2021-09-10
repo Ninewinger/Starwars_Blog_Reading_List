@@ -6,7 +6,8 @@ export const NavBar = () => {
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
             <div className="container-fluid">
                 <NavLink className="navbar-brand" to="/">
-                    Navbar
+                    <img id="logo-navbar" src="./assets/imgs/star-wars-4.svg" />
+                    {/* <img id="logo-navbar" src="./assets/imgs/logo-horizontal.png" /> */}
                 </NavLink>
                 <button
                     className="navbar-toggler"

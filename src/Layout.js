@@ -6,11 +6,12 @@ import {
     Redirect
 } from 'react-router-dom';
 import { NavBar } from './components/NavBar';
+import injectContext from './store/appContext';
 import { CharactersView } from './views/CharactersView';
 import { Home } from './views/Home';
 import { PlanetsView } from './views/PlanetsView';
 
-export const Layout = () => {
+const Layout = () => {
     return (
         <Router >
             <NavBar />
@@ -26,3 +27,5 @@ export const Layout = () => {
         </Router>
     )
 }
+
+export default injectContext(Layout);
