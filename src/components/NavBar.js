@@ -6,7 +6,7 @@ export const NavBar = () => {
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
             <div className="container-fluid">
                 <NavLink className="navbar-brand" to="/">
-                    <img id="logo-navbar" src="./assets/imgs/star-wars-4.svg" />
+                    <img id="logo-navbar" src="./assets/imgs/star-wars-4.svg" alt="star wars logo" />
                     {/* <img id="logo-navbar" src="./assets/imgs/logo-horizontal.png" /> */}
                 </NavLink>
                 <button
@@ -35,6 +35,11 @@ export const NavBar = () => {
                         <li className="nav-item">
                             <NavLink className="nav-link" to="/planets">
                                 Planets
+                            </NavLink>
+                        </li>
+                        <li className="nav-item">
+                            <NavLink className="nav-link" to="/vehicles">
+                                Vehicles
                             </NavLink>
                         </li>
 

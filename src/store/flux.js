@@ -10,6 +10,10 @@ export const getState = ({ getStore, getActions, setStore }) => {
             planets: {
                 loading: true,
                 data: null
+            },
+            vehicles: {
+                loading: true,
+                data: null
             }
         },
         actions: {
@@ -17,14 +21,12 @@ export const getState = ({ getStore, getActions, setStore }) => {
                 const { baseURL } = getStore();
                 fetch(`${baseURL}/people`)
                     .then(resp => resp.json())
-                    .then(data => {
-                        setStore({
-                            characters: {
-                                loading: false,
-                                data
-                            }
-                        })
-                    })
+                    .then(data => setStore({
+                        characters: {
+                            loading: false,
+                            data
+                        }
+                    }))
                     .catch(err => console.log(err))
             },
             getPlanets: () => {
@@ -33,6 +35,18 @@ export const getState = ({ getStore, getActions, setStore }) => {
                     .then(resp => resp.json())
                     .then(data => setStore({
                         planets: {
+                            loading: false,
+                            data
+                        }
+                    }))
+                    .catch(err => console.log(err))
+            },
+            getVehicles: () => {
+                const { baseURL } = getStore();
+                fetch(`${baseURL}/vehicles`)
+                    .then(resp => resp.json())
+                    .then(data => setStore({
+                        vehicles: {
                             loading: false,
                             data
                         }

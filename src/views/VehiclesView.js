@@ -1,24 +1,24 @@
 import React, { useContext } from 'react';
 import { Context } from '../store/appContext';
 
-export const PlanetsView = () => {
+export const VehiclesView = () => {
 
-    const { store: { planets } } = useContext(Context);
-    const { data: planetsData, loading } = planets;
+    const { store: { vehicles } } = useContext(Context);
+    const { data: vehicleData, loading } = vehicles;
 
     return (
         <div>
-            <h1>Planets</h1>
+            <h1>Vehicles</h1>
             <hr />
             <div className="row row-cols-1 row-cols-md-2 row-cols-xl-3">
                 {
                     !loading &&
-                    planetsData.results.map(char => (
+                    vehicleData.results.map(vehicle => (
                         <div
-                            key={char.uid}
+                            key={vehicle.uid}
                             className="col"
                         >
-                            {char.name}
+                            {vehicle.name}
                         </div>
                     ))
                 }
