@@ -19,25 +19,42 @@ const getState = ({ getStore, getActions, setStore }) => {
 			exampleFunction: () => {
 				getActions().changeColor(0, "green");
 			},
-			loadSomeData: () => {
+			loadCharacters: (page = 1 ,limit = 20) => {
 				/**
 					fetch().then().then(data => setStore({ "foo": data.bar }))
 				*/
+				fetch(`https://www.swapi.tech/api/people?page=${page}&limit=${limit}`)
+					.then((response) => response.json())
+					.then((data) => {
+						console.log(data)
+						setCharacters(data);
+					});
+
 			},
-			changeColor: (index, color) => {
-				//get the store
-				const store = getStore();
+			loadVehicles: (page = 1 ,limit = 20) => {
+				/**
+					fetch().then().then(data => setStore({ "foo": data.bar }))
+				*/
+				fetch(`https://www.swapi.tech/api/vehicles?page=${page}&limit=${limit}`)
+					.then((response) => response.json())
+					.then((data) => {
+						console.log(data)
+						setCharacters(data);
+					});
 
-				//we have to loop the entire demo array to look for the respective index
-				//and change its color
-				const demo = store.demo.map((elm, i) => {
-					if (i === index) elm.background = color;
-					return elm;
-				});
+			},
+			loadPlanets: (page = 1 ,limit = 20) => {
+				/**
+					fetch().then().then(data => setStore({ "foo": data.bar }))
+				*/
+				fetch(`https://www.swapi.tech/api/planets?page=${page}&limit=${limit}`)
+					.then((response) => response.json())
+					.then((data) => {
+						console.log(data)
+						setCharacters(data);
+					});
 
-				//reset the global store
-				setStore({ demo: demo });
-			}
+			},
 		}
 	};
 };
