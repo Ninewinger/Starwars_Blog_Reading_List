@@ -29,6 +29,7 @@ const injectContext = PassedComponent => {
         )
     }
 
+    // Retorna una componente, y los componentes se ejecutan cuando son usados
     return StoreWrapper;
 }
 
