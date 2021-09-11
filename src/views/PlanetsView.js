@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import { PlanetCard } from '../components/PlanetCard';
 import { Context } from '../store/appContext';
 
 export const PlanetsView = () => {
@@ -10,15 +11,15 @@ export const PlanetsView = () => {
         <div>
             <h1>Planets</h1>
             <hr />
-            <div className="row row-cols-1 row-cols-md-2 row-cols-xl-3">
+            <div className="row row-cols-1 row-cols-md-2 row-cols-xl-3 g-2 g-lg-3">
                 {
                     !loading &&
-                    planetsData.results.map(char => (
+                    planetsData.results.map(planet => (
                         <div
-                            key={char.name}
+                            key={planet.name}
                             className="col"
                         >
-                            {char.name}
+                            <PlanetCard {...planet} />
                         </div>
                     ))
                 }

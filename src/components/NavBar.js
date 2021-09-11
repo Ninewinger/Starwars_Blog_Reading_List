@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom'
 
 export const NavBar = () => {
     return (
-        <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+        <nav className="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
             <div className="container-fluid">
                 <NavLink className="navbar-brand" to="/">
                     <img id="logo-navbar" src="./assets/imgs/star-wars-4.svg" alt="star wars logo" />
@@ -51,7 +51,7 @@ export const NavBar = () => {
                             placeholder="Search"
                             aria-label="Search"
                         />
-                        <button className="btn btn-outline-success" type="submit">
+                        <button className="btn btn-outline-warning" type="submit">
                             Search
                         </button>
                     </form>

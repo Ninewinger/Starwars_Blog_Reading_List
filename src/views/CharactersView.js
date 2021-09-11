@@ -1,4 +1,5 @@
 import React, { useContext } from 'react'
+import { CharacterCard } from '../components/CharacterCard';
 import { Context } from '../store/appContext';
 
 export const CharactersView = () => {
@@ -10,7 +11,7 @@ export const CharactersView = () => {
         <div>
             <h1>Characters</h1>
             <hr />
-            <div className="row row-cols-1 row-cols-md-2 row-cols-xl-3">
+            <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xxl-5  g-2 g-sm-3">
                 {
                     !loading &&
                     charData.results.map(char => (
@@ -18,7 +19,7 @@ export const CharactersView = () => {
                             key={char.name}
                             className="col"
                         >
-                            {char.name}
+                            <CharacterCard {...char} />
                         </div>
                     ))
                 }
