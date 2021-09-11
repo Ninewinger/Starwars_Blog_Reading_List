@@ -15,7 +15,7 @@ export const PlanetsView = () => {
                     !loading &&
                     planetsData.results.map(char => (
                         <div
-                            key={char.uid}
+                            key={char.name}
                             className="col"
                         >
                             {char.name}

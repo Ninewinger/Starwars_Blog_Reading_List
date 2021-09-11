@@ -2,8 +2,8 @@
 export const getState = ({ getStore, getActions, setStore }) => {
     return {
         store: {
-            baseURL: 'https://www.swapi.tech/api',
-            characters: {
+            baseURL: 'https://swapi.dev/api',
+            people: {
                 loading: true,
                 data: null
             },
@@ -17,40 +17,20 @@ export const getState = ({ getStore, getActions, setStore }) => {
             }
         },
         actions: {
-            getCharacters: () => {
+            getLists: (list) => {
                 const { baseURL } = getStore();
-                fetch(`${baseURL}/people`)
+                fetch(`${baseURL}/${list}`)
                     .then(resp => resp.json())
-                    .then(data => setStore({
-                        characters: {
-                            loading: false,
-                            data
-                        }
-                    }))
-                    .catch(err => console.log(err))
-            },
-            getPlanets: () => {
-                const { baseURL } = getStore();
-                fetch(`${baseURL}/planets`)
-                    .then(resp => resp.json())
-                    .then(data => setStore({
-                        planets: {
-                            loading: false,
-                            data
-                        }
-                    }))
-                    .catch(err => console.log(err))
-            },
-            getVehicles: () => {
-                const { baseURL } = getStore();
-                fetch(`${baseURL}/vehicles`)
-                    .then(resp => resp.json())
-                    .then(data => setStore({
-                        vehicles: {
-                            loading: false,
-                            data
-                        }
-                    }))
+                    .then(data => {
+                        const store = getStore();
+                        setStore({
+                            [list]: {
+                                ...store[list],
+                                loading: false,
+                                data
+                            }
+                        });
+                    })
                     .catch(err => console.log(err))
             }
         }

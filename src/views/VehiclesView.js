@@ -15,7 +15,7 @@ export const VehiclesView = () => {
                     !loading &&
                     vehicleData.results.map(vehicle => (
                         <div
-                            key={vehicle.uid}
+                            key={vehicle.name}
                             className="col"
                         >
                             {vehicle.name}

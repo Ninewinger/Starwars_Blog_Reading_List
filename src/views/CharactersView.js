@@ -3,8 +3,8 @@ import { Context } from '../store/appContext';
 
 export const CharactersView = () => {
 
-    const { store: { characters } } = useContext(Context);
-    const { data: charData, loading } = characters;
+    const { store: { people } } = useContext(Context);
+    const { data: charData, loading } = people;
 
     return (
         <div>
@@ -15,7 +15,7 @@ export const CharactersView = () => {
                     !loading &&
                     charData.results.map(char => (
                         <div
-                            key={char.uid}
+                            key={char.name}
                             className="col"
                         >
                             {char.name}
