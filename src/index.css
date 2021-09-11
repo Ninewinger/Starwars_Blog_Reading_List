@@ -38,4 +38,5 @@ body {
 }
 .link-card:hover .card {
     color: rgb(255, 221, 31);
+    text-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
 }

@@ -5,22 +5,18 @@ export const VehicleCard = ({
     name,
 }) => {
     return (
-        <div className='card'>
-            <div className='row g-0'>
-                <div className='col-4'>
-                    <img
-                        src='...'
-                        alt={name}
-                        className='card-img'
-                    />
-                </div>
-                <div className='col-8'>
-                    <div className='card-body'>
-                        <h5 className='card-title'>{name}</h5>
-                        <Link to='/' className='link-card'>Más</Link>
-                    </div>
+        <Link to='/' className="link-card">
+            <div className='card'>
+                <img
+                    src="./assets/imgs/placeholder.png"
+                    alt={name}
+                    className='card-img-top'
+                />
+                <div className='card-body'>
+                    <h5 className='card-title'>{name}</h5>
                 </div>
             </div>
-        </div>
+
+        </Link>
     )
 }
