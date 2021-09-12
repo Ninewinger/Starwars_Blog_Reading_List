@@ -1,7 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Kanit:wght@500&display=swap');
 
 body {
-  background: rgb(37, 37, 37);
+  /* background: rgb(37, 37, 37); */
+  background: url('./background.jpg');
+  background-size: 100%;
   color: white;
   font-family: 'Kanit', sans-serif;
   letter-spacing: 1px;
@@ -37,6 +39,6 @@ body {
   text-decoration: none;
 }
 .link-card:hover .card {
-    color: rgb(255, 221, 31);
-    text-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
+    color: #ff4f4f;
+    /* text-shadow: 0 0 3px rgba(0, 0, 0, 0.5); */
 }
