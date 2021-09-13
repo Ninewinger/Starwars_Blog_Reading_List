@@ -10,8 +10,8 @@ import injectContext from './store/appContext';
 import { Home } from './views/Home';
 import { CharactersView } from './views/CharactersView';
 import { PlanetsView } from './views/PlanetsView';
-import { VehiclesView } from './views/VehiclesView';
 import { Character } from './views/Character';
+import { StarshipsView } from './views/StarshipsView';
 
 const Layout = () => {
     return (
@@ -22,7 +22,7 @@ const Layout = () => {
                     <Route exact path="/" component={Home} />
                     <Route exact path="/characters" component={CharactersView} />
                     <Route path="/planets" component={PlanetsView} />
-                    <Route path="/vehicles" component={VehiclesView} />
+                    <Route path="/starships" component={StarshipsView} />
                     <Route exact path="/character/:name" component={Character} />
 
                     <Redirect to="/" />

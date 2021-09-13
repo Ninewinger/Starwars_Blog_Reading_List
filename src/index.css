@@ -3,10 +3,9 @@
 body {
   /* background: rgb(37, 37, 37); */
   background: url('./background.jpg');
-  background-size: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
   color: white;
-  /* font-family: 'Kanit', sans-serif; */
-  /* letter-spacing: 1px; */
 }
 
 #logo-navbar {

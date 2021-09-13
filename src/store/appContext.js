@@ -20,7 +20,7 @@ const injectContext = PassedComponent => {
         useEffect(() => {
             state.actions.getLists('people');
             state.actions.getLists('planets');
-            state.actions.getLists('vehicles');
+            state.actions.getLists('starships');
         }, []);
 
         return (

@@ -49,7 +49,7 @@ export const Character = ({ history }) => {
                         <hr />
 
                         <button
-                            className="btn btn-outline-warning"
+                            className="btn btn-warning"
                             onClick={handleReturn}
                         >
                             Return

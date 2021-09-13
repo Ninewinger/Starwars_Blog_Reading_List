@@ -11,7 +11,7 @@ export const getState = ({ getStore, getActions, setStore }) => {
                 loading: true,
                 data: null
             },
-            vehicles: {
+            starships: {
                 loading: true,
                 data: null
             }
