@@ -14,7 +14,8 @@ export const getState = ({ getStore, getActions, setStore }) => {
             starships: {
                 loading: true,
                 data: null
-            }
+            },
+            favs: []
         },
         actions: {
             getLists: (list) => {
@@ -32,6 +33,19 @@ export const getState = ({ getStore, getActions, setStore }) => {
                         });
                     })
                     .catch(err => console.log(err))
+            },
+            addFav: (item) => {
+                const { favs } = getStore();
+                setStore({
+                    favs: [...favs, item]
+                })
+            },
+            removeFav: (name) => {
+                const { favs } = getStore();
+                const newFavs = favs.filter(_item => _item.name !== name);
+                setStore({
+                    favs: newFavs
+                })
             }
         }
     }

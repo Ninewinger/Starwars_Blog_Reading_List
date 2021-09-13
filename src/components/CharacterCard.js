@@ -1,5 +1,6 @@
-import React, { useContext } from 'react'
+import React, { useContext, useMemo } from 'react'
 import { Link } from 'react-router-dom'
+import { useEffect } from 'react/cjs/react.development';
 import { Context } from '../store/appContext'
 
 export const CharacterCard = ({ name }) => {
@@ -8,7 +9,22 @@ export const CharacterCard = ({ name }) => {
 
     const handleFav = () => {
 
+        if (checkFav()) {
+            actions.removeFav(name);
+        } else {
+            actions.addFav({
+                type: 'people',
+                name
+            });
+        }
     }
+
+    const checkFav = () => {
+        return store.favs.find(item => item.name === name)
+    }
+
+    const fav = useMemo(() => checkFav(), [store.favs])
+
     return (
         <div className='card'>
             <Link to={`/character/${name}`} className="link-card">
@@ -25,10 +41,9 @@ export const CharacterCard = ({ name }) => {
                             <h5 className='card-title'>{name}</h5>
                         </Link>
                     </div>
-                    <div className="col-2"><i class="far fa-star" onClick={handleFav}></i></div>
+                    <div className="col-2"><i className={fav ? "fas fa-star" : "far fa-star"} onClick={handleFav}></i></div>
                 </div>
             </div>
         </div>
-
     )
 }
