@@ -4,7 +4,7 @@ import { Context } from '../store/appContext'
 
 export const NavBar = () => {
 
-    const { store: { favs } } = useContext(Context);
+    const { store: { favs }, actions } = useContext(Context);
 
     return (
         <nav className="navbar navbar-expand-md navbar-dark bg-dark sticky-top">
@@ -66,24 +66,17 @@ export const NavBar = () => {
                                 Favorites
                             </a>
                             <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li>
-                                    <a className="dropdown-item" href="#">
-                                        Action
-                                    </a>
-                                </li>
-                                <li>
-                                    <a className="dropdown-item" href="#">
-                                        Another action
-                                    </a>
-                                </li>
-                                <li>
-                                    <hr className="dropdown-divider" />
-                                </li>
-                                <li>
-                                    <a className="dropdown-item" href="#">
-                                        Something else here
-                                    </a>
-                                </li>
+                                {
+                                    favs.length === 0 ?
+                                        <li className="dropdown-item">No favorites to show</li>
+                                        :
+                                        favs.map(item => (
+                                            <li className="dropdown-item d-flex justify-content-between align-items-center">
+                                                <span>{item.name}</span>
+                                                <i class="far fa-minus-square ms-2" onClick={() => actions.removeFav(item.name)}></i>
+                                            </li>
+                                        ))
+                                }
                             </ul>
                         </li>
                     </ul>
