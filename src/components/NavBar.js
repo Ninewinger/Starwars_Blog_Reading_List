@@ -1,7 +1,11 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { NavLink } from 'react-router-dom'
+import { Context } from '../store/appContext'
 
 export const NavBar = () => {
+
+    const { store: { favs } } = useContext(Context);
+
     return (
         <nav className="navbar navbar-expand-md navbar-dark bg-dark sticky-top">
             <div className="container-fluid">
@@ -48,13 +52,17 @@ export const NavBar = () => {
                     <ul className="navbar-nav me-4 mb-2 mb-lg-0">
                         <li className="nav-item dropdown">
                             <a
-                                className="nav-link dropdown-toggle"
+                                className="nav-link dropdown-toggle d-flex align-items-center"
                                 href="#"
                                 id="navbarDropdown"
                                 role="button"
                                 data-bs-toggle="dropdown"
                                 aria-expanded="false"
                             >
+                                {
+                                    favs.length > 0 &&
+                                    <div className="fav mx-2 bg-warning px-2 rounded text-white">{favs.length}</div>
+                                }
                                 Favorites
                             </a>
                             <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
