@@ -12,7 +12,7 @@ export const StarshipCard = ({ name }) => {
             actions.removeFav(name);
         } else {
             actions.addFav({
-                type: 'starships',
+                type: 'starship',
                 name
             });
         }

@@ -12,7 +12,7 @@ export const PlanetCard = ({ name }) => {
             actions.removeFav(name);
         } else {
             actions.addFav({
-                type: 'planets',
+                type: 'planet',
                 name
             });
         }

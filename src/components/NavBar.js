@@ -11,7 +11,6 @@ export const NavBar = () => {
             <div className="container-fluid">
                 <NavLink className="navbar-brand" to="/">
                     <img id="logo-navbar" src="./assets/imgs/star-wars-4.svg" alt="star wars logo" />
-                    {/* <img id="logo-navbar" src="./assets/imgs/logo-horizontal.png" /> */}
                 </NavLink>
                 <button
                     className="navbar-toggler"
@@ -72,9 +71,14 @@ export const NavBar = () => {
                                         :
                                         favs.map(item => (
                                             <li className="dropdown-item d-flex justify-content-between align-items-center">
-                                                <Link to={`/${item.type}/${item.name}`} /* className="link-card" */><span>{item.name}</span>
+                                                <Link to={`/${item.type}/${item.name}`}>
+                                                    <span>{item.name}</span>
                                                 </Link>
-                                                <i class="far fa-minus-square ms-2" onClick={() => actions.removeFav(item.name)}></i>
+                                                <i
+                                                    class="far fa-minus-square ms-2"
+                                                    onClick={() =>
+                                                        actions.removeFav(item.name)}
+                                                ></i>
                                             </li>
                                         ))
                                 }
