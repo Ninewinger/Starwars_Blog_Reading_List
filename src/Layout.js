@@ -12,6 +12,8 @@ import { CharactersView } from './views/CharactersView';
 import { PlanetsView } from './views/PlanetsView';
 import { Character } from './views/Character';
 import { StarshipsView } from './views/StarshipsView';
+import { Planets } from './views/Planets';
+import { Starship } from './views/Starship';
 
 const Layout = () => {
     return (
@@ -24,6 +26,8 @@ const Layout = () => {
                     <Route path="/planets" component={PlanetsView} />
                     <Route path="/starships" component={StarshipsView} />
                     <Route exact path="/character/:name" component={Character} />
+                    <Route exact path="/planet/:namePlanet" component={Planets} />
+                    <Route exact path="/starship/:nameStarship" component={Starship} />
 
                     <Redirect to="/" />
                 </Switch>

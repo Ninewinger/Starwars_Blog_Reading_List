@@ -5,7 +5,7 @@ export const StarshipCard = ({
     name,
 }) => {
     return (
-        <Link to='/' className="link-card">
+        <Link to={`/starship/${name}`} className="link-card">
             <div className='card'>
                 <img
                     src="./assets/imgs/placeholder.png"

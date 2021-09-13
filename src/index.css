@@ -4,7 +4,8 @@
 body {
   background: url('./background.jpg');
   color: white;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Kanit', sans-serif;
+  letter-spacing: 1px;
 }
 
 #logo-navbar {
@@ -47,8 +48,20 @@ div > h1 {
 
 .link-card {
   text-decoration: none;
+  background: ghostwhite;
+  color: black;
 }
-.link-card:hover .card {
+
+.link-card:hover h5 {
     color: #ff4f4f;
     /* text-shadow: 0 0 3px rgba(0, 0, 0, 0.5); */
+}
+
+i {
+  z-index: 999;
+  color: rgb(255, 208, 0);
+}
+
+i:hover {
+  cursor: pointer;
 }
