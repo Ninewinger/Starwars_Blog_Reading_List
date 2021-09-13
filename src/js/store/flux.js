@@ -2,8 +2,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
 			characters: [],
+			character: [],
 			vehicles: [],
-			planets: []
+			vehicle: [],
+			planets: [],
+			planet: []
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
@@ -14,10 +17,22 @@ const getState = ({ getStore, getActions, setStore }) => {
 				fetch(`https://www.swapi.tech/api/people?page=${page}&limit=${limit}`)
 					.then(response => response.json())
 					.then(data => {
-						console.log(data.results);
+						console.log(data);
 						setStore({ characters: data.results });
 					});
 			},
+			loadCharacter: (uid = 1) => {
+				/**
+					fetch().then().then(data => setStore({ "foo": data.bar }))
+				*/
+				fetch(`https://www.swapi.tech/api/people/${uid}`)
+					.then(response => response.json())
+					.then(data => {
+						console.log(data.result);
+						setStore({ character: data.result });
+					});
+			},
+
 			loadVehicles: (page = 1, limit = 20) => {
 				/**
 					fetch().then().then(data => setStore({ "foo": data.bar }))
@@ -25,10 +40,20 @@ const getState = ({ getStore, getActions, setStore }) => {
 				fetch(`https://www.swapi.tech/api/vehicles?page=${page}&limit=${limit}`)
 					.then(response => response.json())
 					.then(data => {
-						console.log(data);
 						setStore({ vehicles: data.results });
 					});
 			},
+			loadVehicle: (uid = 1) => {
+				/**
+					fetch().then().then(data => setStore({ "foo": data.bar }))
+				*/
+				fetch(`https://www.swapi.tech/api/vehicles/${uid}`)
+					.then(response => response.json())
+					.then(data => {
+						setStore({ vehicle: data });
+					});
+			},
+
 			loadPlanets: (page = 1, limit = 20) => {
 				/**
 					fetch().then().then(data => setStore({ "foo": data.bar }))
@@ -36,8 +61,17 @@ const getState = ({ getStore, getActions, setStore }) => {
 				fetch(`https://www.swapi.tech/api/planets?page=${page}&limit=${limit}`)
 					.then(response => response.json())
 					.then(data => {
-						console.log(data);
 						setStore({ planets: data.results });
+					});
+			},
+			loadPlanet: (uid = 1) => {
+				/**
+					fetch().then().then(data => setStore({ "foo": data.bar }))
+				*/
+				fetch(`https://www.swapi.tech/api/planets/${uid}`)
+					.then(response => response.json())
+					.then(data => {
+						setStore({ planet: data });
 					});
 			}
 		}

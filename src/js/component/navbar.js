@@ -4,15 +4,15 @@ import { GiStarfighter } from "@react-icons/all-files/gi/GiStarfighter";
 
 export const Navbar = () => {
 	return (
-		<nav className="navbar navbar-light bg-light mb-3">
+		<nav className="navbar navbar-light text-light bg-dark mb-3">
 			<Link to="/">
-				<span className="navbar-brand mb-0 h1">
+				<span className="navbar-brand mb-0 h1 text-light bg-dark">
 					<GiStarfighter />
 				</span>
 			</Link>
-			<nav className="navbar navbar-expand-lg navbar-light bg-light">
+			<nav className="navbar navbar-expand-lg navbar-light bg-dark">
 				<button
-					className="navbar-toggler"
+					className="navbar-toggler text-light bg-dark"
 					type="button"
 					data-toggle="collapse"
 					data-target="#navbarNav"
@@ -22,19 +22,19 @@ export const Navbar = () => {
 					<span className="navbar-toggler-icon" />
 				</button>
 				<div className="collapse navbar-collapse" id="navbarNav">
-					<ul className="navbar-nav">
-						<li className="nav-item active">
-							<Link className="nav-link" to="/characters">
+					<ul className="navbar-nav text-light bg-dark">
+						<li className="nav-item active text-light bg-dark">
+							<Link className="nav-link text-light bg-dark" to="/characters">
 								Characters <span className="sr-only">(current)</span>
 							</Link>
 						</li>
 						<li className="nav-item">
-							<Link className="nav-link" to="/vehicles">
+							<Link className="nav-link text-light bg-dark" to="/vehicles">
 								Vehicles
 							</Link>
 						</li>
 						<li className="nav-item">
-							<Link className="nav-link" to="/planets">
+							<Link className="nav-link text-light bg-dark" to="/planets">
 								Planets
 							</Link>
 						</li>
