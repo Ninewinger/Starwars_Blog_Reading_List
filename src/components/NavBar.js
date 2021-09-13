@@ -70,7 +70,7 @@ export const NavBar = () => {
                                         <li className="dropdown-item">No favorites to show</li>
                                         :
                                         favs.map(item => (
-                                            <li className="dropdown-item d-flex justify-content-between align-items-center">
+                                            <li key={item.name} className="dropdown-item d-flex justify-content-between align-items-center">
                                                 <Link to={`/${item.type}/${item.name}`}>
                                                     <span>{item.name}</span>
                                                 </Link>
