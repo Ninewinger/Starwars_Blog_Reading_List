@@ -13,7 +13,7 @@ export const CharacterCard = ({ name }) => {
             actions.removeFav(name);
         } else {
             actions.addFav({
-                type: 'people',
+                type: 'character',
                 name
             });
         }

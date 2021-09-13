@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { NavLink } from 'react-router-dom'
+import { NavLink, Link } from 'react-router-dom'
 import { Context } from '../store/appContext'
 
 export const NavBar = () => {
@@ -72,7 +72,8 @@ export const NavBar = () => {
                                         :
                                         favs.map(item => (
                                             <li className="dropdown-item d-flex justify-content-between align-items-center">
-                                                <span>{item.name}</span>
+                                                <Link to={`/${item.type}/${item.name}`} /* className="link-card" */><span>{item.name}</span>
+                                                </Link>
                                                 <i class="far fa-minus-square ms-2" onClick={() => actions.removeFav(item.name)}></i>
                                             </li>
                                         ))
