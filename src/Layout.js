@@ -11,6 +11,7 @@ import { Home } from './views/Home';
 import { CharactersView } from './views/CharactersView';
 import { PlanetsView } from './views/PlanetsView';
 import { VehiclesView } from './views/VehiclesView';
+import { Character } from './views/Character';
 
 const Layout = () => {
     return (
@@ -19,9 +20,10 @@ const Layout = () => {
             <div className="container" >
                 <Switch>
                     <Route exact path="/" component={Home} />
-                    <Route path="/characters" component={CharactersView} />
+                    <Route exact path="/characters" component={CharactersView} />
                     <Route path="/planets" component={PlanetsView} />
                     <Route path="/vehicles" component={VehiclesView} />
+                    <Route exact path="/character/:name" component={Character} />
 
                     <Redirect to="/" />
                 </Switch>

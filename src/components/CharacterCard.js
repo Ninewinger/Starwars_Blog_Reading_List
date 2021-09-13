@@ -5,7 +5,7 @@ export const CharacterCard = ({
     name,
 }) => {
     return (
-        <Link to='/' className="link-card">
+        <Link to={`/character/${name}`} className="link-card">
             <div className='card'>
                 <img
                     src={`./assets/imgs/characters/${name}.jpg`}

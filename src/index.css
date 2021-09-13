@@ -5,8 +5,8 @@ body {
   background: url('./background.jpg');
   background-size: 100%;
   color: white;
-  font-family: 'Kanit', sans-serif;
-  letter-spacing: 1px;
+  /* font-family: 'Kanit', sans-serif; */
+  /* letter-spacing: 1px; */
 }
 
 #logo-navbar {
@@ -22,6 +22,14 @@ body {
 
 .card img {
   height: 300px;
+  width: 100%;
+  object-fit: cover;
+  object-position: top;
+  filter: brightness(85%)
+}
+
+.card img.img-fluid.rounded-start {
+  height: 100%;
   width: 100%;
   object-fit: cover;
   object-position: top;
