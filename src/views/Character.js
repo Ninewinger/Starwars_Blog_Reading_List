@@ -21,7 +21,7 @@ export const Character = ({ history }) => {
     }
 
     return (
-        <div className="card my-3 p-4">
+        <div className="card my-3 p-4 bg-light">
             <div className="row g-0">
                 <div className="col-5">
                     <img

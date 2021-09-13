@@ -1,11 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Kanit:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap');
 
 body {
-  /* background: rgb(37, 37, 37); */
   background: url('./background.jpg');
-  background-repeat: no-repeat;
-  background-size: cover;
   color: white;
+  font-family: 'Roboto', sans-serif;
 }
 
 #logo-navbar {
@@ -14,6 +13,10 @@ body {
   object-fit: contain;
 }
 
+div > h1 {
+  color: white;
+  text-shadow: 0 0 4px rgba(0, 0, 0, 0.7);
+}
 .card {
   background: ghostwhite;
   color: black;
