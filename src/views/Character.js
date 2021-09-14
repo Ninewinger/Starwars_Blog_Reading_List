@@ -2,6 +2,8 @@ import React, { useContext, useEffect, useState } from 'react';
 import { useParams } from 'react-router';
 import { Context } from '../store/appContext';
 
+import '../index.css';
+
 export const Character = ({ history }) => {
 
     const { name } = useParams();
@@ -12,7 +14,6 @@ export const Character = ({ history }) => {
         if (!loading) {
             const _ppl = data.results.find(({ name: _name }) => _name === name);
             setPeopleItem(_ppl);
-            console.log(_ppl);
         }
     }, [loading])
 

@@ -15,7 +15,8 @@ export const getState = ({ getStore, getActions, setStore }) => {
                 loading: true,
                 data: null
             },
-            favs: []
+            favs: [],
+            pilots: []
         },
         actions: {
             getLists: (list) => {

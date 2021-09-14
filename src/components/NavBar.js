@@ -75,7 +75,7 @@ export const NavBar = () => {
                                                     <span>{item.name}</span>
                                                 </Link>
                                                 <i
-                                                    class="far fa-minus-square ms-2"
+                                                    className="far fa-minus-square ms-2"
                                                     onClick={() =>
                                                         actions.removeFav(item.name)}
                                                 ></i>

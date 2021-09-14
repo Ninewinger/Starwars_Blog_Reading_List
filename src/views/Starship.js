@@ -2,6 +2,8 @@ import React, { useContext, useEffect, useState } from 'react';
 import { useParams } from 'react-router';
 import { Context } from '../store/appContext';
 
+import '../index.css';
+
 export const Starship = ({ history }) => {
 
     const { nameStarship } = useParams();

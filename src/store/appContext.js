@@ -18,10 +18,24 @@ const injectContext = PassedComponent => {
         )
 
         useEffect(() => {
-            state.actions.getLists('people');
-            state.actions.getLists('planets');
-            state.actions.getLists('starships');
+            const _temp = localStorage.getItem('store');
+            if (_temp) {
+                const _localState = JSON.parse(_temp);
+                setState({
+                    store: Object.assign(state.store, _localState),
+                    actions: { ...state.actions }
+                });
+            } else {
+                state.actions.getLists('people');
+                state.actions.getLists('planets');
+                state.actions.getLists('starships');
+            }
         }, []);
+
+        useEffect(() => {
+            const localStore = JSON.stringify(state.store);
+            localStorage.setItem('store', localStore);
+        }, [state])
 
         return (
             <Context.Provider value={state}>
