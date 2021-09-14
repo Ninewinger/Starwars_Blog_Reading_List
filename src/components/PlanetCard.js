@@ -28,7 +28,7 @@ export const PlanetCard = ({ name }) => {
         <div className='card'>
             <Link to={`/planet/${name}`} className="link-card">
                 <img
-                    src="./assets/imgs/placeholder.png"
+                    src={`../assets/imgs/planets/${name}.jpg`}
                     alt={name}
                     className='card-img-top'
                 />

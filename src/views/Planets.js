@@ -26,7 +26,7 @@ export const Planets = ({ history }) => {
             <div className="row g-0">
                 <div className="col-5">
                     <img
-                        src="../assets/imgs/placeholder.png"
+                        src={`../assets/imgs/planets/${namePlanet}.jpg`}
                         alt={namePlanet}
                         className="img-fluid rounded-start"
                     />

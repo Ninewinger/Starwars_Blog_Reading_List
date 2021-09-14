@@ -16,8 +16,7 @@ export const getState = ({ getStore, getActions, setStore }) => {
                 data: null
             },
             favs: [],
-            naves: [],
-            homes: []
+            naves: []
         },
         actions: {
             getLists: (list) => {
@@ -64,18 +63,37 @@ export const getState = ({ getStore, getActions, setStore }) => {
                         })
                 }
             },
+            // getHomeplanet: (_url) => {
+            //     const { homes } = getStore();
+            //     const _check = homes.find(({ url }) => url === _url);
+            //     if (!!_check) return;
+            //     fetch(_url)
+            //         .then(resp => resp.json())
+            //         .then(data => {
+            //             homes.push(data)
+            //             setStore({
+            //                 homes: [
+            //                     ...homes
+            //                 ]
+            //             })
+            //         })
+            // },
             getHomeplanet: (_url) => {
-                const { homes } = getStore();
-                const _check = homes.find(({ url }) => url === _url);
-                if (!!_check) return;
+                const { planets } = getStore();
+                const _check = planets.data.results.find(({ url }) => url === _url);
+                if (_check !== undefined) return;
                 fetch(_url)
                     .then(resp => resp.json())
                     .then(data => {
-                        homes.push(data)
+                        planets.data.results.push(data);
                         setStore({
-                            homes: [
-                                ...homes
-                            ]
+                            planets: {
+                                ...planets,
+                                data: {
+                                    ...planets.data,
+                                    results: [...planets.data.results]
+                                }
+                            }
                         })
                     })
             },

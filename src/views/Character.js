@@ -1,13 +1,14 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { useParams } from 'react-router';
 import { Context } from '../store/appContext';
+import { Link } from 'react-router-dom';
 
 import '../index.css';
 
 export const Character = ({ history }) => {
 
     const { name } = useParams();
-    const { store: { people: { data, loading }, homes } } = useContext(Context);
+    const { store: { people: { data, loading }, planets: { data: dataPlanet, loading: loadingPlanet } } } = useContext(Context);
     const [peopleItem, setPeopleItem] = useState([]);
     const [homeWorld, setHomeWorld] = useState(undefined);
 
@@ -23,9 +24,11 @@ export const Character = ({ history }) => {
     }, [peopleItem])
 
     const matchPlanet = () => {
-        const _temp = homes.find(({ url }) => url === peopleItem.homeworld);
-        if (_temp !== undefined) {
-            setHomeWorld(_temp);
+        if (!loadingPlanet) {
+            const _temp = dataPlanet.results.find(({ url }) => url === peopleItem.homeworld);
+            if (_temp !== undefined) {
+                setHomeWorld(_temp);
+            }
         }
     }
 
@@ -59,7 +62,7 @@ export const Character = ({ history }) => {
                                 <p className="text-body"><b>Skin color: </b>{peopleItem.skin_color}</p>
                                 {
                                     homeWorld !== undefined &&
-                                    <p className="text-body"><b>Home World: </b>{homeWorld.name}</p>
+                                    <p className="text-body"><b>Home World: </b><Link to={`/planet/${homeWorld.name}`}>{homeWorld.name}</Link></p>
                                 }
                             </div>
                         }
