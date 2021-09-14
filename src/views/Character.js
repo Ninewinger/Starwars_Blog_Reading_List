@@ -7,8 +7,9 @@ import '../index.css';
 export const Character = ({ history }) => {
 
     const { name } = useParams();
-    const { store: { people: { data, loading } } } = useContext(Context);
+    const { store: { people: { data, loading }, homes } } = useContext(Context);
     const [peopleItem, setPeopleItem] = useState([]);
+    const [homeWorld, setHomeWorld] = useState(undefined);
 
     useEffect(() => {
         if (!loading) {
@@ -16,6 +17,17 @@ export const Character = ({ history }) => {
             setPeopleItem(_ppl);
         }
     }, [loading])
+
+    useEffect(() => {
+        matchPlanet();
+    }, [peopleItem])
+
+    const matchPlanet = () => {
+        const _temp = homes.find(({ url }) => url === peopleItem.homeworld);
+        if (_temp !== undefined) {
+            setHomeWorld(_temp);
+        }
+    }
 
     const handleReturn = () => {
         history.goBack();
@@ -45,6 +57,10 @@ export const Character = ({ history }) => {
                                 <p className="text-body"><b>Height: </b>{peopleItem.height}cm</p>
                                 <p className="text-body"><b>Mass: </b>{peopleItem.mass}kg</p>
                                 <p className="text-body"><b>Skin color: </b>{peopleItem.skin_color}</p>
+                                {
+                                    homeWorld !== undefined &&
+                                    <p className="text-body"><b>Home World: </b>{homeWorld.name}</p>
+                                }
                             </div>
                         }
                         <hr />

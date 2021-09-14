@@ -16,7 +16,8 @@ export const getState = ({ getStore, getActions, setStore }) => {
                 data: null
             },
             favs: [],
-            pilots: []
+            naves: [],
+            homes: []
         },
         actions: {
             getLists: (list) => {
@@ -32,8 +33,51 @@ export const getState = ({ getStore, getActions, setStore }) => {
                                 data
                             }
                         });
+                        const { getShip, getHomeplanet } = getActions();
+                        if (list === 'people') {
+                            data.results.forEach((ppl) => {
+                                if (ppl.starships.length > 0) {
+                                    ppl.starships.forEach((url) => {
+                                        getShip(url)
+                                    })
+                                }
+                                getHomeplanet(ppl.homeworld);
+                            })
+                        }
                     })
                     .catch(err => console.log(err))
+            },
+            getShip: (_url) => {
+                const { naves } = getStore();
+                const _check = naves.find(({ url }) => url === _url);
+                if (!!_check) return;
+                else {
+                    fetch(_url)
+                        .then(resp => resp.json())
+                        .then(data => {
+                            naves.push(data)
+                            setStore({
+                                naves: [
+                                    ...naves
+                                ]
+                            })
+                        })
+                }
+            },
+            getHomeplanet: (_url) => {
+                const { homes } = getStore();
+                const _check = homes.find(({ url }) => url === _url);
+                if (!!_check) return;
+                fetch(_url)
+                    .then(resp => resp.json())
+                    .then(data => {
+                        homes.push(data)
+                        setStore({
+                            homes: [
+                                ...homes
+                            ]
+                        })
+                    })
             },
             addFav: (item) => {
                 const { favs } = getStore();
