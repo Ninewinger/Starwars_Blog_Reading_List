@@ -16,7 +16,9 @@ export const Characters = () => {
 						<p className="card-text">{value.name}</p>
 						<button
 							className="btn btn-outline-success"
-							onClick={(() => setSelected(value.uid), actions.loadCharacter(value.uid))}>
+							onClick={() => {
+								setSelected(value.uid);
+							}}>
 							Learn More!
 						</button>
 					</div>
@@ -34,7 +36,7 @@ export const Characters = () => {
 							<img src="..." className="card-img-top" alt="..." />
 							<div className="card-body">
 								<h5 className="card-title">{store.character.result}</h5>
-								<p className="card-text">{selected.description}</p>
+								<p className="card-text">{store.character.description}</p>
 							</div>
 							<div className="card-footer">
 								<button className="btn btn-danger btn-sm float-end" onClick={() => setSelected(null)}>

@@ -19,17 +19,12 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.then(data => {
 						console.log(data);
 						setStore({ characters: data.results });
-					});
-			},
-			loadCharacter: (uid = 1) => {
-				/**
-					fetch().then().then(data => setStore({ "foo": data.bar }))
-				*/
-				fetch(`https://www.swapi.tech/api/people/${uid}`)
-					.then(response => response.json())
-					.then(data => {
-						console.log(data.result);
-						setStore({ character: data.result });
+						fetch(data.url)
+							.then(response => response.json())
+							.then(data => {
+								console.log(data.result);
+								setStore({ character: data.result });
+							});
 					});
 			},
 
