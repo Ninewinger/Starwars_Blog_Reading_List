@@ -8,9 +8,10 @@ import '../index.css';
 export const Character = ({ history }) => {
 
     const { name } = useParams();
-    const { store: { people: { data, loading }, planets: { data: dataPlanet, loading: loadingPlanet } } } = useContext(Context);
+    const { store: { people: { data, loading }, planets: { data: dataPlanet, loading: loadingPlanet }, starships: { data: dataStarships, loading: loadingShip } } } = useContext(Context);
     const [peopleItem, setPeopleItem] = useState([]);
     const [homeWorld, setHomeWorld] = useState(undefined);
+    const [ships, setShips] = useState([]);
 
     useEffect(() => {
         if (!loading) {
@@ -21,6 +22,7 @@ export const Character = ({ history }) => {
 
     useEffect(() => {
         matchPlanet();
+        matchStarships();
     }, [peopleItem])
 
     const matchPlanet = () => {
@@ -29,6 +31,20 @@ export const Character = ({ history }) => {
             if (_temp !== undefined) {
                 setHomeWorld(_temp);
             }
+        }
+    }
+
+    const matchStarships = () => {
+        if (!loadingShip) {
+            peopleItem.starships?.forEach((_ship) => {
+                const _temp = dataStarships.results.find(({ url }) => url === _ship);
+                if (_temp !== undefined) {
+                    setShips(p => {
+                        p.push(_temp);
+                        return p;
+                    });
+                }
+            })
         }
     }
 
@@ -63,6 +79,16 @@ export const Character = ({ history }) => {
                                 {
                                     homeWorld !== undefined &&
                                     <p className="text-body"><b>Home World: </b><Link to={`/planet/${homeWorld.name}`}>{homeWorld.name}</Link></p>
+                                }
+                                {
+                                    (ships.length > 0) &&
+                                    <p className="text-body"><b>Starships: </b>
+                                        {
+                                            ships.map((_ship, index) => {
+                                                return <span key={_ship.name}><Link to={`/starship/${_ship.name}`}>{_ship.name}</Link>{(ships.length > 1 && (index + 1) !== ships.length) ? ", " : ""}</span>
+                                            })
+                                        }
+                                    </p>
                                 }
                             </div>
                         }

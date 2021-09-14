@@ -1,6 +1,5 @@
 import React, { useContext, useMemo } from 'react'
 import { Link } from 'react-router-dom'
-import { useEffect } from 'react/cjs/react.development';
 import { Context } from '../store/appContext'
 
 export const CharacterCard = ({ name }) => {
