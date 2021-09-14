@@ -23,12 +23,13 @@ const getState = ({ getStore, getActions, setStore }) => {
 						list.push(pchar.result);
 					});
 					setStore({ character: list });
+					console.log(list);
 				} catch (error) {
 					console.log(error);
 				}
 			},
 
-			loadVehicle: async (page = 1, limit = 20) => {
+			loadVehicles: async (page = 1, limit = 20) => {
 				try {
 					const vehicles = await fetch(`https://www.swapi.tech/api/vehicles?page=${page}&limit=${limit}`);
 					const resp = await vehicles.json();
@@ -38,11 +39,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 					const vehicleList = resp.results.map(async value => {
 						const vehi = await fetch(value.url);
 						const pvehi = await vehi.json();
-						console.log(pvehi.result);
 						list.push(pvehi.result);
 					});
 					setStore({ vehicle: list });
-					console.log(list);
 				} catch (error) {
 					console.log(error);
 				}
@@ -58,11 +57,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 					const planetList = resp.results.map(async value => {
 						const plan = await fetch(value.url);
 						const pplan = await plan.json();
-						console.log(pplan.result);
 						list.push(pplan.result);
 					});
 					setStore({ planet: list });
-					console.log(list);
 				} catch (error) {
 					console.log(error);
 				}
