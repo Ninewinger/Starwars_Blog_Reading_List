@@ -15,8 +15,7 @@ export const getState = ({ getStore, getActions, setStore }) => {
                 loading: true,
                 data: null
             },
-            favs: [],
-            naves: []
+            favs: []
         },
         actions: {
             getLists: (list) => {
@@ -47,37 +46,26 @@ export const getState = ({ getStore, getActions, setStore }) => {
                     .catch(err => console.log(err))
             },
             getShip: (_url) => {
-                const { naves } = getStore();
-                const _check = naves.find(({ url }) => url === _url);
-                if (!!_check) return;
+                const { starships } = getStore();
+                const _check = starships.data.results.find(({ url }) => url === _url);
+                if (_check !== undefined) return;
                 else {
                     fetch(_url)
                         .then(resp => resp.json())
                         .then(data => {
-                            naves.push(data)
+                            starships.data.results.push(data)
                             setStore({
-                                naves: [
-                                    ...naves
-                                ]
+                                starships: {
+                                    ...starships,
+                                    data: {
+                                        ...starships.data,
+                                        results: [...starships.data.results]
+                                    }
+                                }
                             })
                         })
                 }
             },
-            // getHomeplanet: (_url) => {
-            //     const { homes } = getStore();
-            //     const _check = homes.find(({ url }) => url === _url);
-            //     if (!!_check) return;
-            //     fetch(_url)
-            //         .then(resp => resp.json())
-            //         .then(data => {
-            //             homes.push(data)
-            //             setStore({
-            //                 homes: [
-            //                     ...homes
-            //                 ]
-            //             })
-            //         })
-            // },
             getHomeplanet: (_url) => {
                 const { planets } = getStore();
                 const _check = planets.data.results.find(({ url }) => url === _url);
