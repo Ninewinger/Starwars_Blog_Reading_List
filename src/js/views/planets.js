@@ -9,14 +9,14 @@ export const Planets = () => {
 	useEffect(
 		() => {
 			if (selected !== null) {
-				buscaId(selected);
+				buscaChar(selected);
 				console.log(char);
 			}
 		},
 		[selected]
 	);
 
-	function buscaId(uid) {
+	function buscaChar(uid) {
 		for (let i = 0; i < store.planet.length; i++) {
 			if (uid === store.planet[i].uid) {
 				setChar(store.planet[i]);
@@ -31,7 +31,11 @@ export const Planets = () => {
 					<div className="card-body">
 						<h5 className="card-title">{value.name}</h5>
 						<p className="card-text">{value.name}</p>
-						<button className="btn btn-outline-success" onClick={() => setSelected(value)}>
+						<button
+							className="btn btn-outline-success"
+							onClick={() => {
+								setSelected(value.uid);
+							}}>
 							Learn More!
 						</button>
 					</div>
@@ -39,33 +43,37 @@ export const Planets = () => {
 			</div>
 		);
 	});
+
 	return (
 		<>
 			<div className="row">
 				<div className="col-md-8 offset-md-2 py-5">
-					{!!selected && (
-						<div className="card detail">
-							<img src="..." className="card-img-top" alt="..." />
-							<div className="card-body">
-								<h5 className="card-title">{char.properties.name}</h5>
-								<p className="card-text">{char.description}</p>
-								<ul>
-									<li>Diameter: {char.properties.diameter}</li>
-									<li>Rotation period: {char.properties.rotation_period}</li>
-									<li>Orbital period: {char.properties.orbital_period}</li>
-									<li>Gravity: {char.properties.gravity}</li>
-									<li>Population: {char.properties.population}</li>
-									<li>Climate: {char.properties.climate}</li>
-									<li>Terrain: {char.properties.terrain}</li>
-								</ul>
+					{!!selected &&
+						!!char && (
+							<div className="card detail">
+								<img src="..." className="card-img-top" alt="..." />
+								<div className="card-body">
+									<h5 className="card-title">{char.properties.name}</h5>
+									<p className="card-text">{char.description}</p>
+									<ul>
+										<li>Diameter: {char.properties.diameter}</li>
+										<li>Rotation period: {char.properties.rotation_period}</li>
+										<li>Orbital period: {char.properties.orbital_period}</li>
+										<li>Gravity: {char.properties.gravity}</li>
+										<li>Population: {char.properties.population}</li>
+										<li>Climate: {char.properties.climate}</li>
+										<li>Terrain: {char.properties.terrain}</li>
+									</ul>
+								</div>
+								<div className="card-footer">
+									<button
+										className="btn btn-danger btn-sm float-end"
+										onClick={() => setSelected(null)}>
+										Close
+									</button>
+								</div>
 							</div>
-							<div className="card-footer">
-								<button className="btn btn-danger btn-sm float-end" onClick={() => setSelected(null)}>
-									Close
-								</button>
-							</div>
-						</div>
-					)}
+						)}
 				</div>
 			</div>
 			<div className="container">

@@ -57,6 +57,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					const planetList = resp.results.map(async value => {
 						const plan = await fetch(value.url);
 						const pplan = await plan.json();
+						console.log(pplan.result);
 						list.push(pplan.result);
 					});
 					setStore({ planet: list });

@@ -9,14 +9,14 @@ export const Vehicles = () => {
 	useEffect(
 		() => {
 			if (selected !== null) {
-				buscaId(selected);
+				buscaChar(selected);
 				console.log(char);
 			}
 		},
 		[selected]
 	);
 
-	function buscaId(uid) {
+	function buscaChar(uid) {
 		for (let i = 0; i < store.vehicle.length; i++) {
 			if (uid === store.vehicle[i].uid) {
 				setChar(store.vehicle[i]);
@@ -31,7 +31,11 @@ export const Vehicles = () => {
 					<div className="card-body">
 						<h5 className="card-title">{value.name}</h5>
 						<p className="card-text">{value.name}</p>
-						<button className="btn btn-outline-success" onClick={() => setSelected(value)}>
+						<button
+							className="btn btn-outline-success"
+							onClick={() => {
+								setSelected(value.uid);
+							}}>
 							Learn More!
 						</button>
 					</div>
@@ -39,6 +43,7 @@ export const Vehicles = () => {
 			</div>
 		);
 	});
+
 	return (
 		<>
 			<div className="row">

@@ -23,7 +23,6 @@ export const Characters = () => {
 			}
 		}
 	}
-
 	const card = store.characters.map((value, i) => {
 		return (
 			<div key={i} className="col-md-4 mb-3">
