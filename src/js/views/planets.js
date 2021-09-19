@@ -6,15 +6,12 @@ export const Planets = () => {
 	const [selected, setSelected] = useState(null);
 	const [char, setChar] = useState(null);
 
-	useEffect(
-		() => {
-			if (selected !== null) {
-				buscaChar(selected);
-				console.log(char);
-			}
-		},
-		[selected]
-	);
+	useEffect(() => {
+		if (selected !== null) {
+			buscaChar(selected);
+			console.log(char);
+		}
+	}, []);
 
 	function buscaChar(uid) {
 		for (let i = 0; i < store.planet.length; i++) {

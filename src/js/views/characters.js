@@ -6,15 +6,12 @@ export const Characters = () => {
 	const [selected, setSelected] = useState(null);
 	const [char, setChar] = useState(null);
 
-	useEffect(
-		() => {
-			if (selected !== null) {
-				buscaChar(selected);
-				console.log(char);
-			}
-		},
-		[selected]
-	);
+	useEffect(() => {
+		if (selected !== null) {
+			buscaChar(selected);
+			console.log(char);
+		}
+	}, []);
 
 	function buscaChar(uid) {
 		for (let i = 0; i < store.character.length; i++) {
@@ -37,6 +34,13 @@ export const Characters = () => {
 								setSelected(value.uid);
 							}}>
 							Learn More!
+						</button>
+						<button
+							className="btn btn-outline-success"
+							onClick={() => {
+								setSelected(value.uid);
+							}}>
+							Favorite
 						</button>
 					</div>
 				</div>

@@ -6,7 +6,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 			vehicles: [],
 			vehicle: [],
 			planets: [],
-			planet: []
+			planet: [],
+			favorite: []
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
@@ -64,6 +65,12 @@ const getState = ({ getStore, getActions, setStore }) => {
 				} catch (error) {
 					console.log(error);
 				}
+			},
+
+			setFavorite: (input) => {
+				let list = []
+				list.push(input)
+				setStore({ favorite: list})
 			}
 		}
 	};

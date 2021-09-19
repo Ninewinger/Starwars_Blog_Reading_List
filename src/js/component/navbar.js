@@ -46,7 +46,8 @@ export const Navbar = () => {
 								role="button"
 								aria-haspopup="true"
 								aria-expanded="false">
-								Dropdown
+								Favorites
+								<span className="badge badge-light ml-2">4</span>
 							</a>
 							<div className="dropdown-menu dropdown-menu-right">
 								<a className="dropdown-item" href="#">
@@ -57,10 +58,6 @@ export const Navbar = () => {
 								</a>
 								<a className="dropdown-item" href="#">
 									Something else here
-								</a>
-								<div className="dropdown-divider" />
-								<a className="dropdown-item" href="#">
-									Separated link
 								</a>
 							</div>
 						</li>
