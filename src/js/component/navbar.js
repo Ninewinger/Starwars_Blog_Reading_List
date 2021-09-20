@@ -1,8 +1,26 @@
-import React from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { GiStarfighter } from "@react-icons/all-files/gi/GiStarfighter";
+import { Context } from "../store/appContext";
 
 export const Navbar = () => {
+	const { store, actions } = useContext(Context);
+
+	const lista = store.favorite.map((fav, i) => {
+		return (
+			<a className="dropdown-item" href="#" key={i}>
+				{fav.name}
+				<button onClick={() => removeFav(i)}>X</button>
+			</a>
+		);
+	});
+
+	function removeFav(i) {
+		var array = [...store.favorite];
+		array.splice(i, 1);
+		setStore({ favorite: array });
+	}
+
 	return (
 		<nav className="navbar navbar-light text-light bg-dark mb-3">
 			<Link to="/">
@@ -39,7 +57,7 @@ export const Navbar = () => {
 							</Link>
 						</li>
 						<li className="nav-item dropdown">
-							<a
+							<Link
 								className="nav-link dropdown-toggle"
 								data-toggle="dropdown"
 								href="#"
@@ -48,17 +66,12 @@ export const Navbar = () => {
 								aria-expanded="false">
 								Favorites
 								<span className="badge badge-light ml-2">4</span>
-							</a>
+							</Link>
 							<div className="dropdown-menu dropdown-menu-right">
-								<a className="dropdown-item" href="#">
+								{lista}
+								<Link className="dropdown-item" href="#">
 									Action
-								</a>
-								<a className="dropdown-item" href="#">
-									Another action
-								</a>
-								<a className="dropdown-item" href="#">
-									Something else here
-								</a>
+								</Link>
 							</div>
 						</li>
 					</ul>

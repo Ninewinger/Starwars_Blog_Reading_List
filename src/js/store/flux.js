@@ -66,11 +66,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 					console.log(error);
 				}
 			},
-
-			setFavorite: (input) => {
-				let list = []
-				list.push(input)
-				setStore({ favorite: list})
+			setFavorite: input => {
+				let list = [];
+				list.push(input);
+				setStore({ favorite: list });
 			}
 		}
 	};

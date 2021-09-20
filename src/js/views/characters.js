@@ -38,7 +38,7 @@ export const Characters = () => {
 						<button
 							className="btn btn-outline-success"
 							onClick={() => {
-								setSelected(value.uid);
+								actions.setFavorite(value.name);
 							}}>
 							Favorite
 						</button>
