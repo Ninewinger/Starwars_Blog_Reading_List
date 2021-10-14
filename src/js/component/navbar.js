@@ -8,7 +8,7 @@ export const Navbar = () => {
 
 	const lista = store.favorite.map((fav, i) => {
 		return (
-			<a className="dropdown-item" href="#" key={i}>
+			<a className="dropdown-item" to="#" key={i}>
 				{fav.name}
 				<button onClick={() => removeFav(i)}>X</button>
 			</a>
@@ -58,9 +58,9 @@ export const Navbar = () => {
 						</li>
 						<li className="nav-item dropdown">
 							<Link
-								className="nav-link dropdown-toggle"
+								className="nav-link text-light dropdown-toggle"
 								data-toggle="dropdown"
-								href="#"
+								to="#"
 								role="button"
 								aria-haspopup="true"
 								aria-expanded="false">
@@ -69,7 +69,7 @@ export const Navbar = () => {
 							</Link>
 							<div className="dropdown-menu dropdown-menu-right">
 								{lista}
-								<Link className="dropdown-item" href="#">
+								<Link className="dropdown-item" to="#">
 									Action
 								</Link>
 							</div>

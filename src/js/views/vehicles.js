@@ -4,19 +4,24 @@ import { Context } from "../store/appContext";
 export const Vehicles = () => {
 	const { store, actions } = useContext(Context);
 	const [selected, setSelected] = useState(null);
-	const [char, setChar] = useState(null);
+	const [vehicle, setvehicle] = useState(null);
 
-	useEffect(() => {
-		if (selected !== null) {
-			buscaChar(selected);
-			console.log(char);
-		}
-	}, []);
+	console.log(vehicle);
 
-	function buscaChar(uid) {
+	useEffect(
+		() => {
+			if (selected !== null) {
+				buscavehicle(selected);
+				console.log(vehicle);
+			}
+		},
+		[selected]
+	);
+
+	function buscavehicle(uid) {
 		for (let i = 0; i < store.vehicle.length; i++) {
 			if (uid === store.vehicle[i].uid) {
-				setChar(store.vehicle[i]);
+				setvehicle(store.vehicle[i]);
 			}
 		}
 	}
@@ -46,22 +51,22 @@ export const Vehicles = () => {
 			<div className="row">
 				<div className="col-md-8 offset-md-2 py-5">
 					{!!selected &&
-						!!char && (
+						!!vehicle && (
 							<div className="card detail">
 								<img src="..." className="card-img-top" alt="..." />
 								<div className="card-body">
-									<h5 className="card-title">{char.properties.name}</h5>
-									<p className="card-text">{char.description}</p>
+									<h5 className="card-title">{vehicle.properties.name}</h5>
+									<p className="card-text">{vehicle.description}</p>
 									<ul>
-										<li>Model: {char.properties.model}</li>
-										<li>Vechicle class: {char.properties.vehicle_class}</li>
-										<li>Manufacturer: {char.properties.manufacturer}</li>
-										<li>Cost in credits: {char.properties.cost_in_credits}</li>
-										<li>length: {char.properties.length}</li>
-										<li>Crew: {char.properties.crew}</li>
-										<li>Max atmosphering speed: {char.properties.max_atmosphering_speed}</li>
-										<li>Cargo capacity: {char.properties.cargo_capacity}</li>
-										<li>Consumable: {char.properties.consumables}</li>
+										<li>Model: {vehicle.properties.model}</li>
+										<li>Vechicle class: {vehicle.properties.vehicle_class}</li>
+										<li>Manufacturer: {vehicle.properties.manufacturer}</li>
+										<li>Cost in credits: {vehicle.properties.cost_in_credits}</li>
+										<li>length: {vehicle.properties.length}</li>
+										<li>Crew: {vehicle.properties.crew}</li>
+										<li>Max atmosphering speed: {vehicle.properties.max_atmosphering_speed}</li>
+										<li>Cargo capacity: {vehicle.properties.cargo_capacity}</li>
+										<li>Consumable: {vehicle.properties.consumables}</li>
 									</ul>
 								</div>
 								<div className="card-footer">

@@ -7,11 +7,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 			vehicle: [],
 			planets: [],
 			planet: [],
-			favorite: []
+			favorite: ["uno", "dos", "tres"]
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
-			loadCharacters: async (page = 1, limit = 20) => {
+			loadCharacters: async (page = 1, limit = 10) => {
 				try {
 					const characters = await fetch(`https://www.swapi.tech/api/people?page=${page}&limit=${limit}`);
 					const resp = await characters.json();
@@ -30,7 +30,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 			},
 
-			loadVehicles: async (page = 1, limit = 20) => {
+			loadVehicles: async (page = 1, limit = 10) => {
 				try {
 					const vehicles = await fetch(`https://www.swapi.tech/api/vehicles?page=${page}&limit=${limit}`);
 					const resp = await vehicles.json();
@@ -48,7 +48,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 			},
 
-			loadPlanets: async (page = 1, limit = 20) => {
+			loadPlanets: async (page = 1, limit = 10) => {
 				try {
 					const planets = await fetch(`https://www.swapi.tech/api/planets?page=${page}&limit=${limit}`);
 					const resp = await planets.json();
@@ -65,11 +65,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 				} catch (error) {
 					console.log(error);
 				}
-			},
-			setFavorite: input => {
-				let list = [];
-				list.push(input);
-				setStore({ favorite: list });
 			}
 		}
 	};

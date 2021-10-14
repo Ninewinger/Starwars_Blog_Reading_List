@@ -6,12 +6,17 @@ export const Characters = () => {
 	const [selected, setSelected] = useState(null);
 	const [char, setChar] = useState(null);
 
-	useEffect(() => {
-		if (selected !== null) {
-			buscaChar(selected);
-			console.log(char);
-		}
-	}, []);
+	console.log(char);
+
+	useEffect(
+		() => {
+			if (selected !== null) {
+				buscaChar(selected);
+				console.log(char);
+			}
+		},
+		[selected]
+	);
 
 	function buscaChar(uid) {
 		for (let i = 0; i < store.character.length; i++) {
@@ -20,33 +25,6 @@ export const Characters = () => {
 			}
 		}
 	}
-	const card = store.characters.map((value, i) => {
-		return (
-			<div key={i} className="col-md-4 mb-3">
-				<div className="card" style={{ width: "18rem" }}>
-					<img src="https://via.placeholder.com/400x200" className="card-img-top" alt="..." />
-					<div className="card-body">
-						<h5 className="card-title">{value.name}</h5>
-						<p className="card-text">{value.name}</p>
-						<button
-							className="btn btn-outline-success"
-							onClick={() => {
-								setSelected(value.uid);
-							}}>
-							Learn More!
-						</button>
-						<button
-							className="btn btn-outline-success"
-							onClick={() => {
-								actions.setFavorite(value.name);
-							}}>
-							Favorite
-						</button>
-					</div>
-				</div>
-			</div>
-		);
-	});
 
 	return (
 		<>
@@ -82,7 +60,31 @@ export const Characters = () => {
 			</div>
 			<div className="container">
 				<h1>Characters</h1>
-				<div className="row">{card}</div>
+				<div className="row">
+					{store.characters.map((value, i) => {
+						return (
+							<div key={i} className="col-md-4 mb-3">
+								<div className="card" style={{ width: "18rem" }}>
+									<img src="https://via.placeholder.com/400x200" className="card-img-top" alt="..." />
+									<div className="card-body">
+										<h5 className="card-title">{value.name}</h5>
+										<p className="card-text">{value.name}</p>
+										<button
+											className="btn btn-outline-success"
+											onClick={() => {
+												setSelected(value.uid);
+											}}>
+											Learn More!
+										</button>
+										<button className="btn btn-outline-success" onClick={() => {}}>
+											Favorite
+										</button>
+									</div>
+								</div>
+							</div>
+						);
+					})}
+				</div>
 			</div>
 		</>
 	);
