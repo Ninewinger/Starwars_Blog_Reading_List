@@ -6,13 +6,14 @@ export const Characters = () => {
 	const [selected, setSelected] = useState(null);
 	const [char, setChar] = useState(null);
 
-	console.log(char);
+	console.log(store.favorite);
 
 	useEffect(
 		() => {
 			if (selected !== null) {
 				buscaChar(selected);
 				console.log(char);
+				console.log(store.favorite);
 			}
 		},
 		[selected]
@@ -76,7 +77,11 @@ export const Characters = () => {
 											}}>
 											Learn More!
 										</button>
-										<button className="btn btn-outline-success" onClick={() => {}}>
+										<button
+											className="btn btn-outline-success"
+											onClick={() => {
+												actions.handleFav(value.uid);
+											}}>
 											Favorite
 										</button>
 									</div>

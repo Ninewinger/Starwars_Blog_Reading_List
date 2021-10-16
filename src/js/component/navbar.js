@@ -6,7 +6,7 @@ import { Context } from "../store/appContext";
 export const Navbar = () => {
 	const { store, actions } = useContext(Context);
 
-	const lista = store.favorite.map((fav, i) => {
+	const lista = store.character.map((fav, i) => {
 		return (
 			<a className="dropdown-item" to="#" key={i}>
 				{fav.name}
