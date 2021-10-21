@@ -7,13 +7,13 @@ export const Characters = () => {
 	const [char, setChar] = useState(null);
 
 	console.log(store.favorite);
-
 	useEffect(
 		() => {
 			if (selected !== null) {
 				buscaChar(selected);
 				console.log(char);
 				console.log(store.favorite);
+				console.log(store.character);
 			}
 		},
 		[selected]

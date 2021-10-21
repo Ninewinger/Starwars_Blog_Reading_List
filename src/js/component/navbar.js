@@ -5,15 +5,16 @@ import { Context } from "../store/appContext";
 
 export const Navbar = () => {
 	const { store, actions } = useContext(Context);
-
-	const lista = store.character.map((fav, i) => {
+	const [char, setChar] = useState(null);
+	/* 
+	const lista = store.favorite.map((id, i) => {
 		return (
 			<a className="dropdown-item" to="#" key={i}>
-				{fav.name}
+				{store.character[id].properties}
 				<button onClick={() => removeFav(i)}>X</button>
 			</a>
 		);
-	});
+	}); */
 
 	function removeFav(i) {
 		var array = [...store.favorite];
@@ -57,22 +58,41 @@ export const Navbar = () => {
 							</Link>
 						</li>
 						<li className="nav-item dropdown">
-							<Link
-								className="nav-link text-light dropdown-toggle"
-								data-toggle="dropdown"
-								to="#"
+							<a
+								className="nav-link dropdown-toggle text-white"
+								href="#"
+								id="navbarDropdown"
 								role="button"
-								aria-haspopup="true"
+								data-bs-toggle="dropdown"
 								aria-expanded="false">
 								Favorites
-								<span className="badge badge-light ml-2">4</span>
-							</Link>
-							<div className="dropdown-menu dropdown-menu-right">
-								{lista}
-								<Link className="dropdown-item" to="#">
-									Action
-								</Link>
-							</div>
+							</a>
+							<ul className="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+								<li>
+									<a className="dropdown-item" href="#">
+										Action
+									</a>
+								</li>
+								<li>
+									<a className="dropdown-item" href="#">
+										Another action
+									</a>
+								</li>
+								<li>
+									<a className="dropdown-item" href="#">
+										Something else here
+									</a>
+									{/* {!!store.favorite &&
+										store.favorite.map((id, i) => {
+											return (
+												<a className="dropdown-item" to="#" key={i}>
+													{store.character[id].properties}
+													<button onClick={() => removeFav(i)}>X</button>
+												</a>
+											);
+										})} */}
+								</li>
+							</ul>
 						</li>
 					</ul>
 				</div>
