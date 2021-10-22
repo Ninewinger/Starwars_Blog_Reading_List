@@ -86,7 +86,7 @@ export const Navbar = () => {
 
 								<li>
 									<a className="dropdown-item" to="#">
-										{!!lista && lista[0].name}
+										{!!lista && store.favorite}
 										{/* <button onClick={() => removeFav(uid)}>X</button> */}
 									</a>
 								</li>

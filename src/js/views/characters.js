@@ -80,7 +80,7 @@ export const Characters = () => {
 										<button
 											className="btn btn-outline-success"
 											onClick={() => {
-												actions.handleFav(value);
+												actions.handleFav(value.name);
 											}}>
 											Favorite
 										</button>
