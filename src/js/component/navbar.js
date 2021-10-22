@@ -5,22 +5,22 @@ import { Context } from "../store/appContext";
 
 export const Navbar = () => {
 	const { store, actions } = useContext(Context);
-	const [char, setChar] = useState(null);
-	/* 
-	const lista = store.favorite.map((id, i) => {
-		return (
-			<a className="dropdown-item" to="#" key={i}>
-				{store.character[id].properties}
-				<button onClick={() => removeFav(i)}>X</button>
-			</a>
-		);
-	}); */
 
-	function removeFav(i) {
+	let lista = [];
+
+	/* 	function removeFav(i) {
 		var array = [...store.favorite];
 		array.splice(i, 1);
 		setStore({ favorite: array });
-	}
+	} */
+
+	console.log("esta es la lista", lista);
+	useEffect(
+		() => {
+			lista.push(store.favorite);
+		},
+		[store.favorite]
+	);
 
 	return (
 		<nav className="navbar navbar-light text-light bg-dark mb-3">
@@ -82,15 +82,13 @@ export const Navbar = () => {
 									<a className="dropdown-item" href="#">
 										Something else here
 									</a>
-									{/* {!!store.favorite &&
-										store.favorite.map((id, i) => {
-											return (
-												<a className="dropdown-item" to="#" key={i}>
-													{store.character[id].properties}
-													<button onClick={() => removeFav(i)}>X</button>
-												</a>
-											);
-										})} */}
+								</li>
+
+								<li>
+									<a className="dropdown-item" to="#">
+										{!!lista && lista[0].name}
+										{/* <button onClick={() => removeFav(uid)}>X</button> */}
+									</a>
 								</li>
 							</ul>
 						</li>

@@ -68,9 +68,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 
 			handleFav: (id = 1) => {
-				let fav = [getStore.favorites];
-				fav.push(id);
-				setStore({ favorite: [fav] });
+				setStore({ favorite: id });
 			}
 		}
 	};
